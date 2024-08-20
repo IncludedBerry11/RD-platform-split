@@ -13,9 +13,15 @@ version ranges
 
   **1.20.81**: `1.20.80.22`, `1.20.80`, `1.21.0`, `1.21.2`, `1.21.20.21` 
 
-  **1.21.20**: Coming soon 
-
   **1.21.30**: `1.21.20.22`, `1.21.20`, `1.21.30`, `???`
+
+---
+`essl-100`: may working better on SnapDragon devices
+
+`essl-310`: may working better on MediaTek devices
+
+`essl-all`: Nothing changed. just vanilla 
+
 
 ---
 Bilibili 王2408

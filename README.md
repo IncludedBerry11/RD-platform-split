@@ -5,7 +5,7 @@ Split the merged shaderCodes for MCBE RenderDragon
 Experimental usage. Do Not release.  
 仅供测试。不保证稳定性
 
-version ranges
+version ranges 版本范围
 ---
 
   **1.19.60**: doesn't exist ok? （这个版本还未加入延迟渲染）
@@ -18,8 +18,9 @@ version ranges
 
   **1.21.30**: `1.21.20.22`, `1.21.20`, `1.21.30`, `???`
 
----
+错误的版本会导致画面变成虚空。
 
+---
 `essl-100`: may working better on SnapDragon devices  
 或许在骁龙(Adreno GPU)手机上更流畅
 

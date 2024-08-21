@@ -27,6 +27,9 @@ version ranges 版本范围
 `essl-310`: may working better on MediaTek devices  
 或许在联发科(Mali GPU)手机上更流畅
 
+`essl-300`: this stuff is new. will it be better or not?
+这是个新玩意，实际效果有待验证(似乎挺流畅)
+
 `essl-all`: Nothing changed. just vanilla  
 啥也没改，只是删除了无效注释行
 

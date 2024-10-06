@@ -3,7 +3,13 @@ import os
 
 #keyWords = ['ESSL_310','Direct3D_SM40','Direct3D_SM50','Direct3D_SM60','Direct3D_SM65','Metal']
 
-keyWords = ['ESSL_310','Metal']
+#keyWords = ['Direct3D_SM40','Direct3D_SM50','Direct3D_SM60','Direct3D_SM65','Metal']
+
+#keyWords = ['ESSL_310','Direct3D_SM40','Direct3D_SM60','Direct3D_SM65']
+
+keyWords = ['ESSL_100','Metal']
+
+parts = 2
 
 directory = 'src' 
 for filepath,dirnames,filenames in os.walk(directory):  
@@ -39,7 +45,7 @@ for filepath,dirnames,filenames in os.walk(directory):
                     a+=1 
                     b2+=1 
                     if char == '\n': b+=1
-                    elif char == '"': d3 = ~d3
+                    elif char == '"': d3=~d3
                     elif char == '[': d2+=1
                     elif char == ']': d2-=1
                     elif char == '{':
@@ -61,7 +67,7 @@ for filepath,dirnames,filenames in os.walk(directory):
                                 char4 = file.read(1)
                                 #print (char4)
                                 #w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0w0
-                                if char4 == ']' or w0 == 2 :
+                                if char4 == ']' or w0 == parts :
                                     content2+='        }\n'
                                     w0 = 0
                                 else:

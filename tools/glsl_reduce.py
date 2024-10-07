@@ -15,15 +15,17 @@ replace3 = 'd_'
 regex4 = re.compile(r'albedo_')  
 replace4 = 'al_'  
 
-#定义json规则
-regex_j1 = re.compile(r'\"DepthOnly(\"|Opaque\")(,\s*|\s*)')
+# 定义json规则  
+regex_j1 = re.compile(r'\"DepthOnly(\"|Opaque\")(,\s*|\s*)')  
+regex_j2 = re.compile(r',(?=\s*[}\]])')  
 
-regex_j2 = re.compile(r',(?=\s*[}\]])')
-
+# 定义ESSL版本修复  
+regex_es300 = re.compile(r'#version 300 es\s*')  
+replace_es300 = '#version 300 es \n'  
 
 
 # 定义要遍历的目录路径  
-directory= 'src'  # 请将此路径替换为实际的目录路径  
+directory= 'src'  
 
 # 初始化累计替换次数  
 total_count1 = 0  
@@ -44,6 +46,7 @@ for root, dirs, files in os.walk(directory):
             content, count1 = regex1.subn(replace1, content)  
             total_count1 += count1  
               
+            # 使用正则表达式替换变量名  
             content, count2 = regex2.subn(replace2, content)  
             total_count2 += (6 * count2)  
               
@@ -51,6 +54,9 @@ for root, dirs, files in os.walk(directory):
                 content, count3 = regex3.subn(replace3, content) 
                 content, count4 = regex4.subn(replace4, content) 
                 total_count2 += (6 * count3) + (4 * count4)  
+              
+            # 修复ESSL版本定义  
+            content = regex_es300.sub(replace_es300, content)  
               
             # 将格式化后的内容写回文件  
             with open(file_path, 'w', encoding='utf-8') as f:  
@@ -63,13 +69,16 @@ for root, dirs, files in os.walk(directory):
             # 读取文件内容  
             with open(file_path, 'r', encoding='utf-8') as f:  
                 content = f.read()  
-                
+              
+            # 移除无用的passes  
             content, count_j = regex_j1.subn('', content)  
             if count_j > 0:  
                 print('DepthOnly has removed')  
-            
+              
+            # 修复json格式化  
             content = regex_j2.sub('', content)  
-            
+              
+            # 将处理后的内容写回文件  
             with open(file_path, 'w', encoding='utf-8') as f:  
                 f.write(content) 
           

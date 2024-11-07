@@ -10,16 +10,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Download Python 2.7
-      run: |
-        curl -L -o python-2.7.18.msi https://www.python.org/ftp/python/2.7.18/python-2.7.18.amd64.msi
-        Start-Process msiexec.exe -ArgumentList '/i python-2.7.18.msi /quiet InstallDir="C:\Python27"' -NoNewWindow -Wait
-      
-    - name: Add Python to PATH
-      run: echo "C:\Python27" >> $GITHUB_PATH
-      
-    - name: Verify Python Installation
-      run: python --version
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
     - name: Copy and Install
       run: |
         git clone https://github.com/Deepshift/DeepCreamPy

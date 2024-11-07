@@ -6,16 +6,16 @@ on:
 
 jobs:
   build-linux:
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.x'
+        python-version: '2.x'
     - name: Copy and Install
       run: |
         git clone https://github.com/Deepshift/DeepCreamPy
         cd DeepCreamPy
-        pip install -r requirements-gpu.txt
+        pip install -r requirements-cpu.txt
